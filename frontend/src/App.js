@@ -14,6 +14,7 @@ import {
   About,
   NotFound,
   SignIn,
+  NewItem
 } from "./pages";
 
 import Navigation from "./components/Navigation";
@@ -28,11 +29,12 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/error" element={<NotFound />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/newitem" element={<NewItem />} />
         {/* <Route path="/blog" element={<Blog />}>
           <Route path="" element={<Posts />} />
           <Route path=":postSlug" element={<Post />} />
         </Route> */}
-        <Route path='*' element={<Navigate to="/error" replace />}/>
+        <Route path='*' element={<Navigate to="/error" replace />} />
       </Routes>
       <Footer />
     </Router>

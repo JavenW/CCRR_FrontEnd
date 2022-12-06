@@ -3,4 +3,5 @@
 # How to Use
  cd frontend \
  npm install \
+ npm install jwt-decode --force\
  npm start

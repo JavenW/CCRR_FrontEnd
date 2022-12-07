@@ -7,9 +7,9 @@ function Home() {
   var receipe = [{ "name": "omelette", "ingredients": ["egg", "chees"] }]
   return (
     <div className="home">
-      <div class="container">
-        <div class="row my-5">
-          <div class="col-lg-6">
+      <div className="container">
+        <div className="row my-5">
+          <div className="col-lg-6">
             <h2>All Items</h2>
             <Table bordered>
               <thead>
@@ -34,7 +34,7 @@ function Home() {
             <Button href="newitem" variant="primary" active>Add new item</Button>{""}
           </div>
 
-          <div class="col-lg-6">
+          <div className="col-lg-6">
             <h2>Receipe For You</h2>
             <Table bordered hover>
               <thead>

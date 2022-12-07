@@ -19,12 +19,12 @@ function Navigation(props) {
             <LinkContainer to="/about" activeClassName="active">
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
-            
+
           </Nav>
           <Nav>
             <NavDropdown title="Account" id="collasible-nav-dropdown">
               <NavDropdown.Item href="signin">Sign In</NavDropdown.Item>
-              <NavDropdown.Item href="signin">
+              <NavDropdown.Item href="signout">
                 Sign On
               </NavDropdown.Item>
               {/* <NavDropdown.Divider />

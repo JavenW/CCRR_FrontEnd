@@ -8,8 +8,8 @@ import "react-datepicker/dist/react-datepicker.css";
 function NewItem() {
     const [startDate, setStartDate] = useState(new Date());
     return (
-        <div class="container">
-            <div class="row my-5">
+        <div className="container">
+            <div className="row my-5">
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Item name</Form.Label>

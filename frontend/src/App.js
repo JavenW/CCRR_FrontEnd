@@ -13,7 +13,6 @@ import {
   Home,
   About,
   NotFound,
-  SignIn,
   NewItem
 } from "./pages";
 
@@ -28,7 +27,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/error" element={<NotFound />} />
-        <Route path="/signin" element={<SignIn />} />
         <Route path="/newitem" element={<NewItem />} />
         {/* <Route path="/blog" element={<Blog />}>
           <Route path="" element={<Posts />} />

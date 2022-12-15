@@ -1,11 +1,15 @@
-import React from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { LinkContainer } from 'react-router-bootstrap';
 
+import React from "react";
+import SignIn from './SignIn';
+
 function Navigation(props) {
+  let flag = sessionStorage.getItem('userObject') && Object.keys(sessionStorage.getItem('userObject')).length > 0;
+  let user = flag ? JSON.parse(sessionStorage.getItem('userObject')) : null
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -19,18 +23,20 @@ function Navigation(props) {
             <LinkContainer to="/about" activeClassName="active">
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
-            
+
           </Nav>
           <Nav>
-            <NavDropdown title="Account" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="signin">Sign In</NavDropdown.Item>
-              <NavDropdown.Item href="signin">
-                Sign On
+            {flag&&<img src = {user.picture} key={Date.now()} width={40} height={40} alt='userIcon'></img>}
+            <NavDropdown title={flag?user.name:"Account"} id="collasible-nav-dropdown">
+              {
+                flag &&
+                <NavDropdown.Item href="profile">
+                  Profile
+                </NavDropdown.Item>
+              }
+              <NavDropdown.Item>
+                <SignIn/>
               </NavDropdown.Item>
-              {/* <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

@@ -4,38 +4,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { LinkContainer } from 'react-router-bootstrap';
 
-import React, {useState} from "react";
-import {useEffect} from "react";
-import jwt_decode from "jwt-decode";
+import React from "react";
+import SignIn from './SignIn';
 
 function Navigation(props) {
-  const [user, setUser] = useState({});
-  function handleCallbackResponse(response){
-    console.log("Encoded JWT ID token:" + response.credential);
-    var userObject = jwt_decode(response.credential);
-    console.log(userObject);
-    setUser(userObject);
-    document.getElementById("signInDiv").hidden = true;
-  }
-
-  function handleSignOut(event){
-    setUser({});
-    document.getElementById("signInDiv").hidden = false;
-  }
-
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize({
-      client_id: "348914870957-et5471e8skds6e7firt8oglhkhp766ql.apps.googleusercontent.com",
-      callback: handleCallbackResponse
-    });
-    google.accounts.id.renderButton(
-        document.getElementById("signInDiv"),
-        {theme: "outline", size:"large"}
-    );
-  },[]);
-
-
+  let flag = sessionStorage.getItem('userObject') && Object.keys(sessionStorage.getItem('userObject')).length > 0;
+  let user = flag ? JSON.parse(sessionStorage.getItem('userObject')) : null
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -52,17 +26,17 @@ function Navigation(props) {
 
           </Nav>
           <Nav>
-            <NavDropdown title="Account" id="collasible-nav-dropdown">
+            {flag&&<img src = {user.picture} key={Date.now()} width={40} height={40} alt='userIcon'></img>}
+            <NavDropdown title={flag?user.name:"Account"} id="collasible-nav-dropdown">
+              {
+                flag &&
+                <NavDropdown.Item href="profile">
+                  Profile
+                </NavDropdown.Item>
+              }
               <NavDropdown.Item>
-                <div id = "signInDiv"></div>
+                <SignIn/>
               </NavDropdown.Item>
-              <NavDropdown.Item href="signout">
-                Sign On
-              </NavDropdown.Item>
-              {/* <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

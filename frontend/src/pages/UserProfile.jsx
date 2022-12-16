@@ -54,7 +54,7 @@ function UserProfile() {
                         <MDBCardText>Full Name</MDBCardText>
                       </MDBCol>
                       <MDBCol sm="9">
-                        <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
+                        <MDBCardText className="text-muted">{user.name}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
                     <hr />
@@ -63,7 +63,7 @@ function UserProfile() {
                         <MDBCardText>Email</MDBCardText>
                       </MDBCol>
                       <MDBCol sm="9">
-                        <MDBCardText className="text-muted">example@example.com</MDBCardText>
+                        <MDBCardText className="text-muted">{user.email}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
                     <hr />

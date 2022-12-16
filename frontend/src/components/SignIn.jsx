@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {useEffect} from "react";
 import jwt_decode from "jwt-decode";
-import NavDropdown from 'react-bootstrap/NavDropdown';
 //client_id = '348914870957-et5471e8skds6e7firt8oglhkhp766ql.apps.googleusercontent.com'
 //client_secret = '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'
 
@@ -24,7 +23,7 @@ function SignIn() {
   }
 
   useEffect(() => {
-    if (!sessionStorage.getItem('userObject') || Object.keys(sessionStorage.getItem('userObject')).length == 0){
+    if (!sessionStorage.getItem('userObject') || Object.keys(sessionStorage.getItem('userObject')).length === 0){
       /* global google */
       google.accounts.id.initialize({
         client_id: "348914870957-et5471e8skds6e7firt8oglhkhp766ql.apps.googleusercontent.com",

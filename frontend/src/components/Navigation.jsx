@@ -26,7 +26,7 @@ function Navigation(props) {
 
           </Nav>
           <Nav>
-            {flag&&<img src = {user.picture} key={Date.now()} width={40} height={40} alt='userIcon'></img>}
+            {flag&&<img src = {user.picture} tm={Date.now()} width={40} height={40} alt='userIcon'></img>}
             <NavDropdown title={flag?user.name:"Account"} id="collasible-nav-dropdown">
               {
                 flag &&

@@ -3,7 +3,6 @@ import React from "react";
 import Table from 'react-bootstrap/Table';
 import Button from "react-bootstrap/Button";
 import Chip from "@mui/material/Chip";
-import Stack from '@mui/material/Stack';
 
 import {
   MDBCol,
@@ -13,14 +12,7 @@ import {
   MDBCardText,
   MDBCardBody,
   MDBCardImage,
-  MDBBtn,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
-  MDBProgress,
-  MDBProgressBar,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem
+  MDBBtn
 } from 'mdb-react-ui-kit';
 
 function UserProfile() {

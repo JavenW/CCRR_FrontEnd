@@ -61,18 +61,6 @@ function UserProfile() {
                     <hr />
                     <MDBRow>
                       <MDBCol sm="3">
-                        <MDBCardText>Phone</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="5">
-                        <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
-                      </MDBCol>
-                      <MDBCol sm="4">
-                        <MDBBtn size="sm">Edit</MDBBtn>
-                      </MDBCol>
-                    </MDBRow>
-                    <hr />
-                    <MDBRow>
-                      <MDBCol sm="3">
                         <MDBCardText>Allergy</MDBCardText>
                       </MDBCol>
                       <MDBCol sm="5">

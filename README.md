@@ -4,4 +4,4 @@
  cd frontend \
  npm install \
  npm install jwt-decode --force\
- npm start
+ set HTTPS=true&&npm start

@@ -1,6 +1,7 @@
 import './App.css';
 
 import React from "react";
+import axios from 'axios';
 
 import {
   BrowserRouter as Router,
@@ -16,6 +17,8 @@ import {
   NewItem,
   Profile,
   UnAuth,
+  LogIn,
+  LoginComplete
 } from "./pages";
 
 import Navigation from "./components/Navigation";
@@ -30,6 +33,8 @@ function App() {
       <Routes>
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/loginComplete" element={<LoginComplete/>}/>
         <Route path="/error" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
         <Route path="/newitem" element={<ProtectedRoute><NewItem /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />

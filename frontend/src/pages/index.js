@@ -4,3 +4,5 @@ export { default as NotFound } from "./NotFound";
 export { default as NewItem } from "./NewItem";
 export { default as Profile } from "./UserProfile";
 export { default as UnAuth } from "./UnAuth";
+export { default as LogIn } from "./LogIn";
+export { default as LoginComplete } from "./LoginComplete";

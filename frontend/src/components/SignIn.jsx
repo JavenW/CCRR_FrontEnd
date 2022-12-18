@@ -1,47 +1,63 @@
 import React, {useState} from "react";
 import {useEffect} from "react";
-import jwt_decode from "jwt-decode";
-//client_id = '348914870957-et5471e8skds6e7firt8oglhkhp766ql.apps.googleusercontent.com'
-//client_secret = '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'
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function SignIn() {
   let flag = sessionStorage.getItem('userObject') && Object.keys(sessionStorage.getItem('userObject')).length > 0;
   const [user, setUser] = useState();
-  function handleCallbackResponse(response){
-    console.log("Encoded JWT ID token:" + response.credential);
-    var userObject = jwt_decode(response.credential);
-    console.log(userObject);
-    setUser(userObject);
-    sessionStorage.setItem("userObject", JSON.stringify(userObject));
-    window.location.reload(false);
-  }
+  const navigate = useNavigate();
 
-  function handleSignOut(event){
+  function handleSignOut(){
     setUser();
     sessionStorage.removeItem('userObject');
     window.location.reload(false);
   }
 
   useEffect(() => {
-    if (!sessionStorage.getItem('userObject') || Object.keys(sessionStorage.getItem('userObject')).length === 0){
-      /* global google */
-      google.accounts.id.initialize({
-        client_id: "348914870957-et5471e8skds6e7firt8oglhkhp766ql.apps.googleusercontent.com",
-        callback: handleCallbackResponse
-      });
-      google.accounts.id.renderButton(
-          document.getElementById("signInDiv"),
-          {theme: "outline", size:"small"}
-      );
+    console.log("1")
+    console.log(flag)
+    console.log(!flag)
+    console.log(!user)
+    console.log(flag&&user)
+    console.log("2")
+    if (user){
+      console.log("check token")
+      // const form = { authtoken: user.token, userid: user.userid };
+      // console.log(form)
+      // axios.post('https://127.0.0.1:5000/checklogin', form
+      var bodyFormData = new FormData();
+      bodyFormData.append('authtoken', user.token);
+      bodyFormData.append('userid', user.userid);
+      axios({
+        method: "post",
+        url: "https://127.0.0.1:5000/checklogin",
+        data: bodyFormData,
+        headers: { "Content-Type": "multipart/form-data" },
+      }).then((response)=>{
+          console.log("correct")
+          console.log(response);
+      })
+      .catch((error) => {
+          console.log("error");
+          console.log(error);
+          handleSignOut()
+      })
     }
     console.log(user)
   },[user]);
 
   useEffect(() => {
     let userSession = sessionStorage.getItem('userObject');
+    console.log(!user)
+    console.log(!flag)
+    
     if (flag) {
       console.log("SessionLogIn")
-      setUser(JSON.parse(userSession));
+      userSession = JSON.parse(userSession)
+      console.log(userSession)
+      console.log(userSession.userid)
+      setUser(userSession);
     }
   },[]);
 
@@ -50,8 +66,8 @@ function SignIn() {
     <div>
       {
         flag
-        ? <div onClick={(e) => handleSignOut(e)}> Sign Out</div>
-        : <div id = "signInDiv"></div>
+        ? <div onClick={(e) => handleSignOut()}> Sign Out</div>
+        : <div id = "signInDiv" onClick={(e) => {navigate("/login")}}>Sign In</div>
       }
       
       {/* {

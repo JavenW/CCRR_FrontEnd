@@ -32,7 +32,7 @@ function UserProfile() {
             <MDBRow>
               <MDBCol lg="3">
                 <MDBCardImage
-                  src={user.picture}
+                  src={user.pict}
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width: '150px', marginTop: "60px" }}

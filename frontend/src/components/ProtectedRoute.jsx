@@ -12,18 +12,20 @@ const ProtectedRoute = ({ children }) => {
     }
     let user = flag ? JSON.parse(sessionStorage.getItem('userObject')) : null
     console.log("check token")
-    var bodyFormData = new FormData();
-    bodyFormData.append('authtoken', user.token);
-    bodyFormData.append('userid', user.userid);
+    // var bodyFormData = new FormData();
+    // bodyFormData.append('authtoken', user.token);
+    // bodyFormData.append('userid', user.userid);
     axios({
-    method: "post",
+    method: "GET",
     url: "https://127.0.0.1:5000/checklogin",
-    data: bodyFormData,
-    headers: { "Content-Type": "multipart/form-data" },
+    // headers: { "Content-Type": "multipart/form-data" },
+    params: {
+        authtoken: user.token,
+        userid: user.userid
+    }
     }).then((response)=>{
         console.log("correct")
-    })
-    .catch((error) => {
+    }).catch((error) => {
         console.log("error");
         console.log(error);
         sessionStorage.removeItem('userObject');

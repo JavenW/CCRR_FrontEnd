@@ -35,7 +35,7 @@ function UserProfile() {
                   src={user.pict}
                   alt="avatar"
                   className="rounded-circle"
-                  style={{ width: '150px', marginTop: "60px" }}
+                  style={{ width: '150px', marginTop: "20px" }}
                   fluid />
               </MDBCol>
               <MDBCol lg="9">

@@ -13,7 +13,6 @@ function LoginComplete() {
         let pict = queryParameters.get('pict')
         let authtoken = queryParameters.get('authtoken')
         sessionStorage.setItem("userObject", JSON.stringify({userid:userid, token:authtoken, name:name, email:email, pict: pict}));
-        console.log("hihihi")
         window.location.reload(false);
         navigate("/");
     },[]);

@@ -13,14 +13,12 @@ function LogIn() {
     const parse = require('html-react-parser');
     useEffect(() => {
         axios({
-            'method':'GET',
+            'method':'POST',
             'url':'https://127.0.0.1:5000/login',
             'headers': {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials': 'true',
-            },
-            'params': {
-            },
+            }
         }).then((response)=>{
             console.log(response['data']);
             setSign(response['data']);

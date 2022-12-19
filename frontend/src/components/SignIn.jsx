@@ -30,10 +30,13 @@ function SignIn() {
       bodyFormData.append('authtoken', user.token);
       bodyFormData.append('userid', user.userid);
       axios({
-        method: "post",
+        method: "GET",
         url: "https://127.0.0.1:5000/checklogin",
-        data: bodyFormData,
-        headers: { "Content-Type": "multipart/form-data" },
+        // headers: { "Content-Type": "multipart/form-data" },
+        params: {
+            authtoken: user.token,
+            userid: user.userid
+        }
       }).then((response)=>{
           console.log("correct")
           console.log(response);

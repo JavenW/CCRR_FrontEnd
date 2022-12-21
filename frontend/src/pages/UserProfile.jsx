@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import Table from 'react-bootstrap/Table';
 import Button from "react-bootstrap/Button";
@@ -14,14 +14,92 @@ import {
   MDBCardImage,
   MDBBtn
 } from 'mdb-react-ui-kit';
+import axios from "axios";
 
 function UserProfile() {
-  var items = [{ "allergy": "egg" }, { "allergy": "milk" }];
+  // var items = [{ "allergy": "egg" }, { "allergy": "milk" },{ "allergy": "egg" }, { "allergy": "milk" },{ "allergy": "egg" }, { "allergy": "milk" }];
   let user = JSON.parse(sessionStorage.getItem('userObject'))
+  const [allergy, setAllergy] = useState("");
+  const [items, setItems] = useState([]);
+  const handleAdd =  event => {
+      //event.preventDefault();
+      console.log(allergy)
 
-  const handleDelete = () => {
+    axios({
+        method: "POST",
+        url: "https://127.0.0.1:5000/addallergy",
+        params: {
+          token: user.token,
+          userid: user.userid,
+          allergy: allergy
+        }
+      }).then((response)=>{
+          //setItems([])
+          //console.log("correct")
+          //console.log(response.data);
+      })
+      .catch((error) => {
+          console.log("error");
+          console.log(error);
+          // handleSignOut()
+      })
+    window.location.reload(false);
+    console.info('You clicked the add icon.');
+  };
+
+
+  const handleDelete = value => event => {
+      //event.preventDefault();
+      console.log(value)
+      /*axios.delete(`https://127.0.0.1:5000/deleteallergy${user.userid, user.token, allergy}`)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })*/
+    axios({
+        method: "POST",
+        url: "https://127.0.0.1:5000/deleteallergy",
+        params: {
+          token: user.token,
+          userid: user.userid,
+          allergy: value
+        }
+      }).then((response)=>{
+          //setItems([])
+          //console.log("correct")
+          //console.log(response.data);
+      })
+      .catch((error) => {
+          console.log("error");
+          console.log(error);
+          // handleSignOut()
+      })
+    window.location.reload(false);
     console.info('You clicked the delete icon.');
   };
+  useEffect(() => {
+      var bodyFormData = new FormData();
+      bodyFormData.append('token', user.token);
+      bodyFormData.append('userid', user.userid);
+      axios({
+        method: "GET",
+        url: "https://127.0.0.1:5000/getallergy",
+        params: {
+          token: user.token,
+            userid: user.userid
+        }
+      }).then((response)=>{
+          setItems(response.data)
+          //console.log("correct")
+          //console.log(response.data);
+      })
+      .catch((error) => {
+          console.log("error");
+          console.log(error);
+      })
+
+    },[]);
+
   return (
     <section style={{ marginTop: "150px" }}>
       <MDBContainer className="py-5" >
@@ -64,17 +142,23 @@ function UserProfile() {
                         <MDBCardText>Allergy</MDBCardText>
                       </MDBCol>
                       <MDBCol sm="5">
-                        {items.map(item => {
+                        {
+                          items.map(item => {
                           return (
                             <Chip
-                              label={item.allergy}
-                              onDelete={handleDelete}
+                              label={item}
+                              onDelete={handleDelete(item)}
                             />
                           );
                         })}
                       </MDBCol>
                       <MDBCol sm="4">
-                        <MDBBtn size="sm">Add</MDBBtn>
+                        <input type={"text"} placeholder={'allergy name'} value={allergy} onChange={
+                          event => {
+                            setAllergy(event.target.value)
+                          }
+                        }/>
+                        <MDBBtn size="sm" onClick={handleAdd}>Add</MDBBtn>
                       </MDBCol>
                     </MDBRow>
                   </MDBCardBody>

@@ -15,6 +15,7 @@ import {
   About,
   NotFound,
   NewItem,
+  Recipe,
   Profile,
   UnAuth,
   LogIn,
@@ -37,6 +38,7 @@ function App() {
         <Route path="/loginComplete" element={<LoginComplete/>}/>
         <Route path="/error" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
         <Route path="/newitem" element={<ProtectedRoute><NewItem /></ProtectedRoute>} />
+        <Route path="/recipe" element={<ProtectedRoute><Recipe /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         <Route path="/unauth" element={flag ? <Navigate to="/" replace /> : <UnAuth />} />
         {/* <Route path="/blog" element={<Blog />}>

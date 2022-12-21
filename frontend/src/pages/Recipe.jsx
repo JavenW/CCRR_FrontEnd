@@ -16,6 +16,12 @@ function Receipe() {
       .then((response) => {
         console.log(response.data)
         setRecipes(response.data)
+      }).catch((error) => {
+        if (error.response) {
+          console.log(error.response)
+          console.log(error.response.status)
+          console.log(error.response.headers)
+          }
       })
     }
 

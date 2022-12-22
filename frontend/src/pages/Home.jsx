@@ -25,7 +25,7 @@ function Home() {
 
   }, []);
 
-  const handleDelete = value => event => {
+  function handleDelete(value) {
     axios({
       method: "POST",
       url: "http://52.207.246.240:5011/deleteitem",
@@ -35,12 +35,12 @@ function Home() {
 
       }
     }).then((response) => {
-
+      console.log("delete success")
+      console.log(response)
     })
       .catch((error) => {
         console.log("error");
         console.log(error);
-        // handleSignOut()
       })
     window.location.reload(false);
   };
@@ -80,7 +80,7 @@ function Home() {
                         <span>&emsp;</span>
                         <Button href={"edititem?item=" + key} variant="outline-primary">Edit</Button>{""}
                       </td>
-                      <td><DeleteIcon active onClick={handleDelete(key)}>{""}</DeleteIcon></td>
+                      <td><DeleteIcon active onClick={() => handleDelete(key)}>{""}</DeleteIcon></td>
                     </tr>
                   );
                 })}

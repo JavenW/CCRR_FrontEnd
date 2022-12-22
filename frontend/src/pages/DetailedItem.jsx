@@ -10,7 +10,7 @@ function DetailedItem() {
     function getData() {
         axios({
           method: "GET",
-          url:"/detaileddata",
+          url:"/detaileddata/<id>",
         })
         .then((response) => {
           const res =response.data

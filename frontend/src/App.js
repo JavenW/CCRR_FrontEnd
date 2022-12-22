@@ -20,7 +20,9 @@ import {
   Profile,
   UnAuth,
   LogIn,
-  LoginComplete
+  LoginComplete,
+  DetailedItem,
+  ReceipeRec,
 } from "./pages";
 
 import Navigation from "./components/Navigation";
@@ -43,6 +45,8 @@ function App() {
         <Route path="/recipe" element={<ProtectedRoute><Recipe /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         <Route path="/unauth" element={flag ? <Navigate to="/" replace /> : <UnAuth />} />
+        <Route path="/detaileditem" element={<DetailedItem />} />
+        <Route path="/randomreceipe" element={<ReceipeRec />} />
         {/* <Route path="/blog" element={<Blog />}>
           <Route path="" element={<Posts />} />
           <Route path=":postSlug" element={<Post />} />

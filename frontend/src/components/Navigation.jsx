@@ -20,8 +20,11 @@ function Navigation(props) {
             <LinkContainer to="/" activeClassName="active">
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/about" activeClassName="active">
+            <LinkContainer to="/recipe" activeClassName="active">
               <Nav.Link>About</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/randomreceipe" activeClassName="active">
+              <Nav.Link>Receipe Rec</Nav.Link>
             </LinkContainer>
 
           </Nav>

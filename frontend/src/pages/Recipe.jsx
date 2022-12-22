@@ -11,7 +11,7 @@ function Receipe() {
     function getData() {
       axios({
         method: "GET",
-        url:"http://127.0.0.1:5000/getrecipe/jw4156@columbia.edu",
+        url:"http://127.0.0.1:5000/getrecipe/<email>",
       })
       .then((response) => {
         console.log(response.data)
@@ -44,7 +44,7 @@ function Receipe() {
                         <Card.Title>{item.title}</Card.Title>
                       </Card.Body>
                     <Card.Body>
-                      <Card.Link href="#">Detailed instruction</Card.Link>
+                      <Card.Link href={"/detaileddata" + item.id}>Detailed instruction</Card.Link>
                     </Card.Body>
                   </Card>
                 </div>

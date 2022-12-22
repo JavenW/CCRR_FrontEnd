@@ -1,16 +1,17 @@
 import React from "react";
 import { useState, useEffect } from 'react'
 import axios from "axios";
-import ListGroup from 'react-bootstrap/ListGroup';
-import Table from 'react-bootstrap/Table';
+import { useSearchParams } from "react-router-dom";
 
 function DetailedItem() {
     const [detailedData, setDetailedDate] = useState(null);
+    const [queryParameters] = useSearchParams();
+    let itemname = queryParameters.get('item')
     const parse = require('html-react-parser')
     function getData() {
         axios({
           method: "GET",
-          url:"/detaileddata/<id>",
+          url:"http://127.0.0.1:5000/detaileddata/" + itemname,
         })
         .then((response) => {
           const res =response.data

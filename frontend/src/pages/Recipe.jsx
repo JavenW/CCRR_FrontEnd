@@ -45,7 +45,7 @@ function Receipe() {
                         <Card.Title>{item.title}</Card.Title>
                       </Card.Body>
                     <Card.Body>
-                      <Card.Link href={"/detaileddata" + item.id}>Detailed instruction</Card.Link>
+                      <Card.Link href={"detaileditem?item=" + item.id}>Detailed instruction</Card.Link>
                     </Card.Body>
                   </Card>
                 </div>

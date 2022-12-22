@@ -80,14 +80,15 @@ function Home() {
                         <span>&emsp;</span>
                         <Button href={"edititem?item=" + key} variant="outline-primary">Edit</Button>{""}
                       </td>
-                      <td><DeleteIcon active onClick={handleDelete(key)}>Delete</DeleteIcon>{""}</td>
+                      <td><DeleteIcon active onClick={handleDelete(key)}></DeleteIcon></td>
                     </tr>
                   );
                 })}
               </tbody>
 
             </Table>
-            <div>Note: red row is expired item, yellow row is the item expiring in 5 days</div>
+            <div>Note: red row is expired item, yellow row is the item expiring in 5 days.</div>
+            <p></p>
             <Button href="newitem" variant="primary" active>Add new item</Button>{""}
           </div>
         </div>

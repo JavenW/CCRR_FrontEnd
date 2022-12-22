@@ -7,11 +7,12 @@ import ListGroup from 'react-bootstrap/ListGroup';
 function Receipe() {
 
     const [recipes, setRecipes] = useState(null);
+    let user = JSON.parse(sessionStorage.getItem('userObject'))
 
     function getData() {
       axios({
         method: "GET",
-        url:"http://127.0.0.1:5000/getrecipe/<email>",
+        url:"http://127.0.0.1:5000/getrecipe/"+user.email,
       })
       .then((response) => {
         console.log(response.data)

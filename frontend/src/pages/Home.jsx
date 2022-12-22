@@ -1,15 +1,55 @@
-import React from "react";
+
+import axios from 'axios';
+import React, { useState, useEffect } from "react";
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import SimpleDateTime from 'react-simple-timestamp-to-date';
 
 function Home() {
-  var items = [{ "name": "tomatoes", "quantity": 2, "expiration_date": "02-Jan-2023" }, { "name": "egg", "quantity": 2, "expiration_date": "02-Jan-2023" }]
-  var receipe = [{ "name": "omelette", "ingredients": ["egg", "chees"] }]
+  let user = JSON.parse(sessionStorage.getItem('userObject'))
+
+  const [items, setItems] = useState([]);
+
+
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "http://127.0.0.1:5011/getitems/" + user.email
+    }).then((response) => {
+      setItems(response.data)
+    })
+      .catch((error) => {
+        console.log("error");
+        console.log(error);
+      })
+
+  }, []);
+
+  const handleDelete = value => event => {
+    axios({
+      method: "POST",
+      url: "http://127.0.0.1:5011/deleteitem",
+      params: {
+        email: user.email,
+        item: value,
+
+      }
+    }).then((response) => {
+
+    })
+      .catch((error) => {
+        console.log("error");
+        console.log(error);
+        // handleSignOut()
+      })
+    window.location.reload(false);
+  };
+
   return (
     <div className="home">
       <div className="container">
         <div className="row my-5">
-          <div className="col-lg-6">
+          <div className="col-lg-8">
             <h2>All Items</h2>
             <Table bordered>
               <thead>
@@ -19,12 +59,12 @@ function Home() {
                 </tr>
               </thead>
               <tbody>
-                {items.map(item => {
+                {Object.keys(items).map((key) => {
                   return (
                     <tr>
-                      <td>{item.name}</td>
-                      <td>{item.expiration_date}</td>
-                      <Button variant="danger" active>Delete</Button>{""}
+                      <td>{key}</td>
+                      <td><SimpleDateTime dateFormat="DMY" dateSeparator="/" showTime="0">{items[key]}</SimpleDateTime></td>
+                      <td><Button variant="danger" active onClick={handleDelete(key)}>Delete</Button>{""}</td>
                     </tr>
                   );
                 })}
@@ -32,34 +72,6 @@ function Home() {
 
             </Table>
             <Button href="newitem" variant="primary" active>Add new item</Button>{""}
-          </div>
-
-          <div className="col-lg-6">
-            <h2>Receipe For You</h2>
-            <Table bordered hover>
-              <thead>
-                <tr>
-                  <th>Receipe Name</th>
-                  <th>Ingredients</th>
-                </tr>
-              </thead>
-              <tbody>
-                {receipe.map(item => {
-                  return (
-                    <tr>
-                      <td>{item.name}</td>
-                      <td>
-                        {item.ingredients.map(ing => {
-                          return (
-                            <span>{ing} </span>
-                          )
-                        })}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </Table>
           </div>
         </div>
       </div>

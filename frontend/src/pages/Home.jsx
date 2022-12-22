@@ -80,7 +80,7 @@ function Home() {
                         <span>&emsp;</span>
                         <Button href={"edititem?item=" + key} variant="outline-primary">Edit</Button>{""}
                       </td>
-                      <td><DeleteIcon active onClick={handleDelete(key)}></DeleteIcon></td>
+                      <td><DeleteIcon active onClick={handleDelete(key)}>{""}</DeleteIcon></td>
                     </tr>
                   );
                 })}

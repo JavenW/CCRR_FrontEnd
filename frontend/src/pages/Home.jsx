@@ -64,7 +64,8 @@ function Home() {
                     <tr>
                       <td>{key}</td>
                       <td>
-                        <SimpleDateTime dateFormat="DMY" dateSeparator="/" showTime="0">{items[key]}</SimpleDateTime>
+                        <SimpleDateTime dateFormat="MDY" dateSeparator="/" showTime="0">{items[key]}</SimpleDateTime>
+                        <span>  </span>
                         <Button href={"edititem?item=" + key} variant="primary" active>Edit</Button>{""}
                       </td>
                       <td><Button variant="danger" active onClick={handleDelete(key)}>Delete</Button>{""}</td>

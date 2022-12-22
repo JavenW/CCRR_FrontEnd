@@ -36,7 +36,7 @@ function Receipe() {
         {recipes && <div>
           <div class="container">
             <div class="row align-items-center my-5">
-                <h1 class="font-weight-light">All receipes</h1>
+                <h1 class="font-weight-light">Recommened Receipes</h1>
                 {recipes.map(item => (
                   <div class="col-lg-4">
                     <Card style={{ width: '20rem', margin: '0.5rem' }}>

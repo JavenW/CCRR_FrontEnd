@@ -112,6 +112,7 @@ function UserProfile() {
                 <MDBCardImage
                   src={user.pict}
                   alt="avatar"
+                  tm={Date.now()}
                   className="rounded-circle"
                   style={{ width: '150px', marginTop: "20px" }}
                   fluid />

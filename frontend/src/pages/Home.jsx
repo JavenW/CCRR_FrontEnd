@@ -37,12 +37,12 @@ function Home() {
     }).then((response) => {
       console.log("delete success")
       console.log(response)
+      window.location.reload(false);
     })
       .catch((error) => {
         console.log("error");
         console.log(error);
       })
-    window.location.reload(false);
   };
 
   function highlightColor(date) {

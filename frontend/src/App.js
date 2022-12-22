@@ -15,6 +15,7 @@ import {
   About,
   NotFound,
   NewItem,
+  EditItem,
   Recipe,
   Profile,
   UnAuth,
@@ -35,9 +36,10 @@ function App() {
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
         <Route path="/login" element={<LogIn />} />
-        <Route path="/loginComplete" element={<LoginComplete/>}/>
+        <Route path="/loginComplete" element={<LoginComplete />} />
         <Route path="/error" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
         <Route path="/newitem" element={<ProtectedRoute><NewItem /></ProtectedRoute>} />
+        <Route path="/edititem" element={<ProtectedRoute><EditItem /></ProtectedRoute>} />
         <Route path="/recipe" element={<ProtectedRoute><Recipe /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         <Route path="/unauth" element={flag ? <Navigate to="/" replace /> : <UnAuth />} />

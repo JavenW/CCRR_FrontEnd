@@ -19,7 +19,7 @@ function EditItem() {
         console.log(expdate)
         axios({
             method: "POST",
-            url: "http://127.0.0.1:5011/edititem",
+            url: "http://52.207.246.240:5011/edititem",
             params: {
                 email: user.email,
                 item: itemname,

@@ -16,7 +16,7 @@ function NewItem() {
         console.log(expdate)
         axios({
             method: "POST",
-            url: "http://127.0.0.1:5011/additem",
+            url: "http://52.207.246.240:5011/additem",
             params: {
                 email: user.email,
                 item: name,

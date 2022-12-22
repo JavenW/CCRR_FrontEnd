@@ -44,9 +44,7 @@ function EditItem() {
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Item name</Form.Label>
-                        <Form.Control placeholder={itemname} value={name} onChange={event => {
-                            setName(event.target.value)
-                        }} />
+                        <Form.Control placeholder={itemname} value={name} disabled="disabled" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Expiration Date</Form.Label>

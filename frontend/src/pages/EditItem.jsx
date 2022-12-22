@@ -14,15 +14,13 @@ function EditItem() {
     let itemname = queryParameters.get('item')
 
     const handleAdd = event => {
-        console.log(itemname)
-        console.log(expdate)
         axios({
             method: "POST",
             url: "http://127.0.0.1:5011/edititem",
             params: {
                 email: user.email,
                 item: itemname,
-                expdate: expdate
+                expdate: Math.floor(expdate.getTime() / 1000)
 
             }
         }).then(() => {

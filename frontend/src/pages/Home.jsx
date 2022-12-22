@@ -46,7 +46,7 @@ function Home() {
   };
 
   function highlightColor(date) {
-    let dt = new Date(date)
+    let dt = new Date(parseInt(date) * 1000)
     let currdate = new Date();
     if (dt < currdate) {
       return "red";

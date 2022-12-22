@@ -12,15 +12,13 @@ function NewItem() {
     let user = JSON.parse(sessionStorage.getItem('userObject'))
 
     const handleAdd = event => {
-        console.log(name)
-        console.log(expdate)
         axios({
             method: "POST",
             url: "http://52.207.246.240:5011/additem",
             params: {
                 email: user.email,
                 item: name,
-                expdate: expdate
+                expdate: Math.floor(expdate.getTime() / 1000)
 
             }
         }).then(() => {

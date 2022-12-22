@@ -9,21 +9,18 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function EditItem() {
     const [expdate, setExpDate] = useState(new Date());
-    const [name, setName] = useState("");
     let user = JSON.parse(sessionStorage.getItem('userObject'))
     const [queryParameters] = useSearchParams();
     let itemname = queryParameters.get('item')
 
     const handleAdd = event => {
-        console.log(itemname)
-        console.log(expdate)
         axios({
             method: "POST",
             url: "http://52.207.246.240:5011/edititem",
             params: {
                 email: user.email,
                 item: itemname,
-                expdate: expdate
+                expdate: Math.floor(expdate.getTime() / 1000)
 
             }
         }).then(() => {
@@ -44,7 +41,7 @@ function EditItem() {
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Item name</Form.Label>
-                        <Form.Control placeholder={itemname} value={name} disabled="disabled" />
+                        <Form.Control placeholder={itemname} disabled="disabled" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Expiration Date</Form.Label>

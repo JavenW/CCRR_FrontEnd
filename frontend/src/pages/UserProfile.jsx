@@ -27,7 +27,7 @@ function UserProfile() {
 
     axios({
         method: "POST",
-        url: "https://127.0.0.1:5000/addallergy",
+        url: "https://ccrruserbackendapplication-env.eba-dairev2g.us-east-1.elasticbeanstalk.com/addallergy",
         params: {
           token: user.token,
           userid: user.userid,
@@ -51,14 +51,14 @@ function UserProfile() {
   const handleDelete = value => event => {
       //event.preventDefault();
       console.log(value)
-      /*axios.delete(`https://127.0.0.1:5000/deleteallergy${user.userid, user.token, allergy}`)
+      /*axios.delete(`https://ccrruserbackendapplication-env.eba-dairev2g.us-east-1.elasticbeanstalk.com/deleteallergy${user.userid, user.token, allergy}`)
       .then(res => {
         console.log(res);
         console.log(res.data);
       })*/
     axios({
         method: "POST",
-        url: "https://127.0.0.1:5000/deleteallergy",
+        url: "https://ccrruserbackendapplication-env.eba-dairev2g.us-east-1.elasticbeanstalk.com/deleteallergy",
         params: {
           token: user.token,
           userid: user.userid,
@@ -83,7 +83,7 @@ function UserProfile() {
       bodyFormData.append('userid', user.userid);
       axios({
         method: "GET",
-        url: "https://127.0.0.1:5000/getallergy",
+        url: "https://ccrruserbackendapplication-env.eba-dairev2g.us-east-1.elasticbeanstalk.com/getallergy",
         params: {
           token: user.token,
             userid: user.userid

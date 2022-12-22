@@ -25,13 +25,13 @@ function SignIn() {
       console.log("check token")
       // const form = { authtoken: user.token, userid: user.userid };
       // console.log(form)
-      // axios.post('https://127.0.0.1:5000/checklogin', form
+      // axios.post('https://ccrruserbackendapplication-env.eba-dairev2g.us-east-1.elasticbeanstalk.com/checklogin', form
       var bodyFormData = new FormData();
       bodyFormData.append('authtoken', user.token);
       bodyFormData.append('userid', user.userid);
       axios({
         method: "GET",
-        url: "https://127.0.0.1:5000/checklogin",
+        url: "https://ccrruserbackendapplication-env.eba-dairev2g.us-east-1.elasticbeanstalk.com/checklogin",
         // headers: { "Content-Type": "multipart/form-data" },
         params: {
             authtoken: user.token,

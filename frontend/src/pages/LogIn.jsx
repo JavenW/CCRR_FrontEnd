@@ -13,8 +13,8 @@ function LogIn() {
     const parse = require('html-react-parser');
     useEffect(() => {
         axios({
-            'method':'POST',
-            'url':'https://127.0.0.1:5000/login',
+            'method':'GET',
+            'url':'https://ccrruserbackendapplication-env.eba-dairev2g.us-east-1.elasticbeanstalk.com/login',
             'headers': {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials': 'true',

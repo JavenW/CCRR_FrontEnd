@@ -11,7 +11,7 @@ function DetailedItem() {
     function getData() {
         axios({
           method: "GET",
-          url:"http://127.0.0.1:5000/detaileddata/" + itemname,
+          url:"http://ec2-3-144-120-147.us-east-2.compute.amazonaws.com/detaileddata/" + itemname,
         })
         .then((response) => {
           const res =response.data

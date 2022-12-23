@@ -23,7 +23,7 @@ function Navigation(props) {
             <LinkContainer to="/recipe" activeClassName="active">
               <Nav.Link>Recipe For You</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/randomreceipe" activeClassName="active">
+            <LinkContainer to="/randomrecipe" activeClassName="active">
               <Nav.Link>Random Receipe</Nav.Link>
             </LinkContainer>
 

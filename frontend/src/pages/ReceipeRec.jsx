@@ -7,7 +7,7 @@ function RandomReceipe() {
     function getData() {
         axios({
           method: "GET",
-          url:"/randomreceipe",
+          url:"http://ec2-3-144-120-147.us-east-2.compute.amazonaws.com/randomreceipe",
         })
         .then((response) => {
           const res =response.data
